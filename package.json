@@ -1,0 +1,47 @@
+{
+  "name": "effect-template",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "author": "Gabriel Hamel <gabriel.hamel.pro@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "prepare": "effect-language-service patch && husky",
+    "start": "tsx --env-file-if-exists=.env src/index.ts",
+    "dev": "tsx --env-file-if-exists=.env --watch src/index.ts",
+    "telemetry-collector": "docker compose up -d && docker attach otel-tui",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest --passWithNoTests",
+    "format:fix": "dprint fmt",
+    "format:check": "dprint check",
+    "lint:check": "eslint",
+    "lint:fix": "eslint --fix",
+    "type:check": "tsc --noEmit",
+    "ci": "npm run format:check && npm run lint:check && npm run type:check && npm run test"
+  },
+  "dependencies": {
+    "@effect/opentelemetry": "^0.61.0",
+    "@effect/platform": "^0.94.4",
+    "@effect/platform-node": "^0.104.1",
+    "effect": "^3.19.16"
+  },
+  "devDependencies": {
+    "@effect/language-service": "^0.73.1",
+    "@effect/vitest": "^0.27.0",
+    "@eslint/js": "^9.39.2",
+    "@eslint/json": "^0.14.0",
+    "@eslint/markdown": "^7.5.1",
+    "@types/node": "^25.2.3",
+    "dprint": "^0.51.1",
+    "eslint": "^9.39.2",
+    "globals": "^17.3.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.6.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0",
+    "vitest": "^3.2.4"
+  }
+}
